@@ -16,9 +16,9 @@ function addTodo() {
     }
 
 
-function displayTodo() { //create, render()
+function displayTodo() { 
     todoList.innerHTML = "";
-    for (let i = 0; i < todoListArray.length; i++) { // you are looping through each item in the array
+    for (let i = 0; i < todoListArray.length; i++) { 
         let todo = document.createElement("li");
              todo.innerHTML = todoListArray[i].text;   
 
@@ -28,9 +28,12 @@ function displayTodo() { //create, render()
             removeBtn.setAttribute("data-id", i)
             removeBtn.innerHTML = "Remove";
 
-            if(todoListArray[i].lineThrough === true){
-                todo.style.textDecoration = "line-through";   
+            if(todoListArray[i].lineThrough !== true){
+                todo.style.textDecoration = "none";
+            } else {
+                todo.style.textDecoration = "line-through";
             }
+            
             
             todo.appendChild(removeBtn);
             todoList.appendChild(todo);
@@ -46,8 +49,9 @@ todoList.addEventListener("click", function(e) {
     if (e.target.tagName === "LI") {
         
             
-                todoListArray[targetId].lineThrough = true //targetId represents 0 - x ;
-            if (e.target.classList.toggle("checked")) {
+            if (todoListArray[targetId].lineThrough = true) {
+             //targetId represents 0 - x ;
+            // if (e.target.classList.toggle("checked")) {
                 e.target.style.textDecoration = "line-through";
             } else {
             e.target.style.textDecoration = "none";
